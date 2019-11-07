@@ -1,5 +1,5 @@
 {
-	"description": "STM8S/A 标准库",
+	"description": "STM8S/A SPL",
 	"name": "framework-N8",
 	"system": "*",
 	"url": "https://www.st.com/en/embedded-software/stsw-stm8069.html",
