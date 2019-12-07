@@ -1,7 +1,7 @@
 {
-	"description": "STM8S/A SPL",
-	"name": "framework-N8",
+	"description": "framework N09  STM8S/A SPL",
+	"name": "framework-N09",
 	"system": "*",
 	"url": "https://www.st.com/en/embedded-software/stsw-stm8069.html",
-	"version": "2.3.1"
+	"version": "1.0.0"
 }
