@@ -1,5 +1,5 @@
 {
-	"description": "framework N09  STM8S/A SPL",
+	"description": "framework N09 STM8S/A SPL",
 	"name": "framework-N09",
 	"system": "*",
 	"url": "https://www.st.com/en/embedded-software/stsw-stm8069.html",
