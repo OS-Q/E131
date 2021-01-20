@@ -1,9 +1,9 @@
-# [Framework N09](https://github.com/OS-Q/N09)
+# [Framework N02](https://github.com/OS-Q/N02)
 
 [![sites](http://182.61.61.133/link/resources/OSQ.png)](http://www.OS-Q.com)
 
-### [简介](https://github.com/OS-Q/N09/wiki)
+### [简介](https://github.com/OS-Q/N02/wiki)
 
-[Framework N09](https://github.com/OS-Q/N09) 基于PlatformIO平台，应用[STM8 SPL](https://www.st.com/en/embedded-software/stsw-stm8069.html) 框架
+[Framework N02](https://github.com/OS-Q/N02)基于[PlatformIO](https://github.com/platformio/platformio-core) 框架
 
-### [OS-Q = [Open Source & Operating System]](http://www.OS-Q.com)
+### [Q = (OpenSource & OperatingSystem) ](http://www.OS-Q.com)
