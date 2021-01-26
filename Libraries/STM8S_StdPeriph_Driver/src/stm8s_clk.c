@@ -1,5 +1,5 @@
 
-#include "clk.h"
+#include "stm8s_clk.h"
 
 /** @addtogroup STM8S_StdPeriph_Driver
   * @{
