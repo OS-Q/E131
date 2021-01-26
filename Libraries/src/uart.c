@@ -8,6 +8,7 @@
 
 #include <string.h>
 #include <stdint.h>
+
 #include "stm8s.h"
 #include "uart.h"
 
@@ -21,11 +22,11 @@
 int uart_puts(const char *s)
 {
     uint8_t i;
-    for(i = 0; i < strlen(s); i++) {
-        while(!(UART1_SR & UART_SR_TXE));
-        UART1_DR = s[i];
+    for(i = 0; i < strlen(s); i++)
+    {
+        while(!(UART1->SR & (1<<7)));
+        UART1->DR = s[i];
     }
-
     return(i);
 }
 
@@ -38,16 +39,15 @@ int uart_puts(const char *s)
 void uart_init()
 {
     /* Configure RX and TX pins */
-    PD_DDR = 0xBF;
-    PD_CR1 = 0xFF;
-
+    GPIOD->DDR = 0xBF;
+    GPIOD->CR1 = 0xFF;
     /* Enable TX & RX */
-    UART1_CR2 = UART_CR2_TEN | UART_CR2_REN;
+    UART1->CR2 = (1 << 3) | (1 << 2);
     /* 1 stop bit */
-    UART1_CR3 &= ~(UART_CR3_STOP1 | UART_CR3_STOP0);
+    UART1->CR3 &= ~((1 << 5) | (1 << 4));
     /* 115200 baud, 16MHz, Error:0.08%   */
-    UART1_BRR2 = 0x0B;
-    UART1_BRR1 = 0x08;
+    UART1->BRR2 = 0x0B;
+    UART1->BRR1 = 0x08;
 }
 
 /*---------------------------(C) COPYRIGHT 2021 OS-Q -------------------------*/

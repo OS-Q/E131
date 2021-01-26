@@ -6,6 +6,7 @@
 ****版权：OS-Q
 *******************************************************************************/
 #include <stddef.h>
+
 #include "stm8s.h"
 #include "timer4.h"
 
@@ -19,11 +20,12 @@ volatile uint8_t *_t4_timeoutp;
 *******************************************************************************/
 void timer4_init()
 {
-    nointerrupts();
-    TIM4_PSCR = 7;
-    TIM4_IER |= TIM4_IER_UIE;
-    TIM4_SR &= ~TIM4_SR_UIF;
-    interrupts();
+    disableInterrupts();
+    TIM4->PSCR = 7;
+    TIM4->IER |= TIM4_IER_UIE;
+    TIM4->SR &= ~TIM4_SR1_UIF;
+    // TIM4->SR &= 0xFE;
+    enableInterrupts();
 }
 
 /*******************************************************************************
@@ -36,7 +38,7 @@ void timer4_start(uint8_t *timeoutp)
 {
     // Enable timer 4
     _t4_timeoutp = timeoutp;
-    TIM4_CR1 |= TIM4_CR1_CEN;
+    TIM4->CR1 |= TIM4_CR1_CEN;
 }
 
 /*******************************************************************************
@@ -45,9 +47,10 @@ void timer4_start(uint8_t *timeoutp)
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-void timer4_stop() {
-            // disable t4
-    TIM4_CR1 &= ~TIM4_CR1_CEN;
+void timer4_stop()
+{
+    // disable t4
+    TIM4->CR1 &= ~TIM4_CR1_CEN;
     _t4_timeoutp = NULL;
 }
 /*******************************************************************************
@@ -56,17 +59,19 @@ void timer4_stop() {
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-void timer4_isr(void) __interrupt(INT_TIM4)
+void timer4_isr(void) __interrupt(23)
 {
-    if (*_t4_timeoutp > 0) {
+    if (*_t4_timeoutp > 0)
+    {
         (*_t4_timeoutp)--;
-    } else {
+    } else
+    {
         timer4_stop();
     }
     // Clear interrupt flag
-    TIM4_SR &= ~TIM4_SR_UIF;
+    TIM4->SR &= ~TIM4_SR1_UIF;
     // Rewrite counter, calculated value is 125
-    TIM4_CNTR = 0xFF - 128;
+    TIM4->CNTR = 0xFF - 128;
 }
 
 /*---------------------------(C) COPYRIGHT 2021 OS-Q -------------------------*/

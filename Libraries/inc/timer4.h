@@ -25,6 +25,7 @@ void timer4_stop();
  * You don't need to call the interrupt routine, but it must be
  * visible in main.
  */
-void timer4_isr(void) __interrupt(INT_TIM4);
+
+void timer4_isr(void) __interrupt(23);
 
 #endif /*__TIMER4_H*/
