@@ -1,77 +1,13 @@
-/**
-  ******************************************************************************
-  * @file    stm8s.h
-  * @author  MCD Application Team
-  * @version V2.3.0
-  * @date    16-June-2017
-  * @brief   This file contains all HW registers definitions and memory mapping.
-   ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
 
-/* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM8S_H
 #define __STM8S_H
 
-/** @addtogroup STM8S_StdPeriph_Driver
-  * @{
-  */
-  
-/* Uncomment the line below according to the target STM8S or STM8A device used in your
-   application. */
 
- /* #define STM8S208 */      /*!< STM8S High density devices with CAN */
- /* #define STM8S207 */      /*!< STM8S High density devices without CAN */
- /* #define STM8S007 */      /*!< STM8S Value Line High density devices */
- /* #define STM8AF52Ax */    /*!< STM8A High density devices with CAN */
- /* #define STM8AF62Ax */    /*!< STM8A High density devices without CAN */
- /* #define STM8S105 */      /*!< STM8S Medium density devices */
- /* #define STM8S005 */      /*!< STM8S Value Line Medium density devices */
- /* #define STM8AF626x */    /*!< STM8A Medium density devices */
- /* #define STM8AF622x */    /*!< STM8A Low density devices */
- /* #define STM8S103 */      /*!< STM8S Low density devices */
- /* #define STM8S003 */      /*!< STM8S Value Line Low density devices */
- /* #define STM8S903 */      /*!< STM8S Low density devices */
- /* #define STM8S001 */      /*!< STM8S Value Line Low denisty devices */
-
-/*   Tip: To avoid modifying this file each time you need to switch between these
-        devices, you can define the device in your toolchain compiler preprocessor. 
-
-  - High-Density STM8A devices are the STM8AF52xx STM8AF6269/8x/Ax,
-    STM8AF51xx, and STM8AF6169/7x/8x/9x/Ax microcontrollers where the Flash memory
-    density ranges between 32 to 128 Kbytes
-  - Medium-Density STM8A devices are the STM8AF622x/4x, STM8AF6266/68,
-    STM8AF612x/4x, and STM8AF6166/68 microcontrollers where the Flash memory 
-    density ranges between 8 to 32 Kbytes
-  - High-Density STM8S devices are the STM8S207xx, STM8S007 and STM8S208xx microcontrollers
-    where the Flash memory density ranges between 32 to 128 Kbytes.
-  - Medium-Density STM8S devices are the STM8S105x and STM8S005 microcontrollers
-    where the Flash memory density ranges between 16 to 32-Kbytes.
-  - Low-Density STM8A devices are the STM8AF622x microcontrollers where the Flash
-    density is 8 Kbytes. 
-  - Low-Density STM8S devices are the STM8S103xx, STM8S003, STM8S903xx and STM8S001 microcontrollers
-    where the Flash density is 8 Kbytes. */
 
 #if !defined (STM8S208) && !defined (STM8S207) && !defined (STM8S105) && \
     !defined (STM8S103) && !defined (STM8S903) && !defined (STM8AF52Ax) && \
     !defined (STM8AF62Ax) && !defined (STM8AF626x) && !defined (STM8S007) && \
-    !defined (STM8S003)&& !defined (STM8S005) && !defined(STM8S001) && !defined (STM8AF622x) 
+    !defined (STM8S003)&& !defined (STM8S005) && !defined(STM8S001) && !defined (STM8AF622x)
  #error "Please select first the target STM8S/A device used in your application (in stm8s.h file)"
 #endif
 
@@ -142,7 +78,7 @@
  #else /* STM8S903, STM8S103, STM8S001, STM8S003, STM8S105, STM8AF626x, STM8AF622x */
   /*!< Used with memory Models for code less than 64K */
   #define MEMCPY memcpy
- #endif /* STM8S208 or STM8S207 or STM8S007 or STM8AF62Ax or STM8AF52Ax */ 
+ #endif /* STM8S208 or STM8S207 or STM8S007 or STM8AF62Ax or STM8AF52Ax */
 #elif defined (_SDCC_)                    /* SDCC patch: mostly not required / not supported */
  #define FAR
  #define NEAR
@@ -158,7 +94,7 @@
 #endif /* __CSMC__ */
 
 /* For FLASH routines, select whether pointer will be declared as near (2 bytes,
-   to handle code smaller than 64KB) or far (3 bytes, to handle code larger 
+   to handle code smaller than 64KB) or far (3 bytes, to handle code larger
    than 64K) */
 
 #if defined (STM8S105) || defined (STM8S005) || defined (STM8S103) || defined (STM8S003) || \
@@ -189,35 +125,21 @@
  #else /*_IAR_*/
   #define IN_RAM(a) __ramfunc a
  #endif /* _COSMIC_ */
-#else 
+#else
   #define IN_RAM(a) a
 #endif /* RAM_EXECUTION */
 
 /*!< [31:16] STM8S Standard Peripheral Library main version V2.3.0*/
-#define __STM8S_STDPERIPH_VERSION_MAIN   ((uint8_t)0x02) /*!< [31:24] main version */                                  
+#define __STM8S_STDPERIPH_VERSION_MAIN   ((uint8_t)0x02) /*!< [31:24] main version */
 #define __STM8S_STDPERIPH_VERSION_SUB1   ((uint8_t)0x03) /*!< [23:16] sub1 version */
 #define __STM8S_STDPERIPH_VERSION_SUB2   ((uint8_t)0x00) /*!< [15:8]  sub2 version */
-#define __STM8S_STDPERIPH_VERSION_RC     ((uint8_t)0x00) /*!< [7:0]  release candidate */ 
+#define __STM8S_STDPERIPH_VERSION_RC     ((uint8_t)0x00) /*!< [7:0]  release candidate */
 #define __STM8S_STDPERIPH_VERSION       ( (__STM8S_STDPERIPH_VERSION_MAIN << 24)\
                                           |(__STM8S_STDPERIPH_VERSION_SUB1 << 16)\
                                           |(__STM8S_STDPERIPH_VERSION_SUB2 << 8)\
                                           |(__STM8S_STDPERIPH_VERSION_RC))
 
-/******************************************************************************/
 
-/* Includes ------------------------------------------------------------------*/
-
-/* Exported types and constants ----------------------------------------------*/
-
-/** @addtogroup Exported_types
-  * @{
-  */
-
-/**
- * IO definitions
- *
- * define access restrictions to peripheral registers
- */
 #define     __I     volatile const   /*!< defines 'read only' permissions     */
 #define     __O     volatile         /*!< defines 'write only' permissions    */
 #define     __IO    volatile         /*!< defines 'read / write' permissions  */
@@ -262,21 +184,7 @@ typedef enum {ERROR = 0, SUCCESS = !ERROR} ErrorStatus;
 #define S32_MAX    (2147483647)
 #define S32_MIN    (-2147483648uL)
 
-/**
-  * @}
-  */
-  
-/** @addtogroup MAP_FILE_Exported_Types_and_Constants
-  * @{
-  */
 
-/******************************************************************************/
-/*                          IP registers structures                           */
-/******************************************************************************/
-
-/**
-  * @brief  General Purpose I/Os (GPIO)
-  */
 typedef struct GPIO_struct
 {
   __IO uint8_t ODR; /*!< Output Data Register */
@@ -299,10 +207,6 @@ GPIO_TypeDef;
 #define GPIO_DDR_RESET_VALUE ((uint8_t)0x00)
 #define GPIO_CR1_RESET_VALUE ((uint8_t)0x00)
 #define GPIO_CR2_RESET_VALUE ((uint8_t)0x00)
-
-/**
-  * @}
-  */
 
 /*----------------------------------------------------------------------------*/
 #if defined(STM8S105) || defined(STM8S005) || defined(STM8S103) || defined(STM8S003) || \
@@ -585,7 +489,7 @@ CLK_TypeDef;
 #define CLK_CKDIVR_HSIDIV    ((uint8_t)0x18) /*!< High speed internal clock prescaler */
 #define CLK_CKDIVR_CPUDIV    ((uint8_t)0x07) /*!< CPU clock prescaler */
 
-#define CLK_PCKENR1_TIM1     ((uint8_t)0x80) /*!< Timer 1 clock enable */ 
+#define CLK_PCKENR1_TIM1     ((uint8_t)0x80) /*!< Timer 1 clock enable */
 #define CLK_PCKENR1_TIM3     ((uint8_t)0x40) /*!< Timer 3 clock enable */
 #define CLK_PCKENR1_TIM2     ((uint8_t)0x20) /*!< Timer 2 clock enable */
 #define CLK_PCKENR1_TIM5     ((uint8_t)0x20) /*!< Timer 5 clock enable */
@@ -1266,7 +1170,7 @@ typedef struct TIM5_struct
 /**
   * @}
   */
-	
+
 /*----------------------------------------------------------------------------*/
 /**
   * @brief  8-bit system timer  with synchro module(TIM6)
@@ -2229,7 +2133,7 @@ typedef struct
       __IO uint8_t FR06;
       __IO uint8_t FR07;
       __IO uint8_t FR08;
-      
+
       __IO uint8_t FR09;
       __IO uint8_t FR10;
       __IO uint8_t FR11;
@@ -2260,7 +2164,7 @@ typedef struct
       __IO uint8_t F1R7;
       __IO uint8_t F1R8;
     }Filter01;
-    
+
     struct
     {
       __IO uint8_t F2R1;
@@ -2271,7 +2175,7 @@ typedef struct
       __IO uint8_t F2R6;
       __IO uint8_t F2R7;
       __IO uint8_t F2R8;
-	
+
       __IO uint8_t F3R1;
       __IO uint8_t F3R2;
       __IO uint8_t F3R3;
@@ -2281,7 +2185,7 @@ typedef struct
       __IO uint8_t F3R7;
       __IO uint8_t F3R8;
     }Filter23;
-    
+
     struct
     {
       __IO uint8_t F4R1;
@@ -2292,7 +2196,7 @@ typedef struct
       __IO uint8_t F4R6;
       __IO uint8_t F4R7;
       __IO uint8_t F4R8;
-			
+
       __IO uint8_t F5R1;
       __IO uint8_t F5R2;
       __IO uint8_t F5R3;
@@ -2302,7 +2206,7 @@ typedef struct
       __IO uint8_t F5R7;
       __IO uint8_t F5R8;
     } Filter45;
-    
+
     struct
     {
       __IO uint8_t ESR;
@@ -2319,7 +2223,7 @@ typedef struct
       __IO uint8_t FCR3;
       uint8_t Reserved2[3];
     }Config;
-    
+
     struct
     {
       __IO uint8_t MFMI;
@@ -2339,7 +2243,7 @@ typedef struct
       __IO uint8_t MTSRL;
       __IO uint8_t MTSRH;
     }RxFIFO;
-  }Page; 
+  }Page;
 } CAN_TypeDef;
 
 /** @addtogroup CAN_Registers_Bits_Definition
@@ -2438,62 +2342,62 @@ typedef struct
 #define CAN_EIER_EPVIE    ((uint8_t)0x02)
 #define CAN_EIER_BOFIE    ((uint8_t)0x04)
 #define CAN_EIER_LECIE    ((uint8_t)0x10)
-#define CAN_EIER_ERRIE    ((uint8_t)0x80)    
+#define CAN_EIER_ERRIE    ((uint8_t)0x80)
 
 /* CAN transmit error counter Register bits(CAN_TECR) */
-#define CAN_TECR_TEC0     ((uint8_t)0x01)    
-#define CAN_TECR_TEC1     ((uint8_t)0x02)    
-#define CAN_TECR_TEC2     ((uint8_t)0x04)    
-#define CAN_TECR_TEC3     ((uint8_t)0x08)    
-#define CAN_TECR_TEC4     ((uint8_t)0x10)    
-#define CAN_TECR_TEC5     ((uint8_t)0x20)    
-#define CAN_TECR_TEC6     ((uint8_t)0x40)    
-#define CAN_TECR_TEC7     ((uint8_t)0x80)    
+#define CAN_TECR_TEC0     ((uint8_t)0x01)
+#define CAN_TECR_TEC1     ((uint8_t)0x02)
+#define CAN_TECR_TEC2     ((uint8_t)0x04)
+#define CAN_TECR_TEC3     ((uint8_t)0x08)
+#define CAN_TECR_TEC4     ((uint8_t)0x10)
+#define CAN_TECR_TEC5     ((uint8_t)0x20)
+#define CAN_TECR_TEC6     ((uint8_t)0x40)
+#define CAN_TECR_TEC7     ((uint8_t)0x80)
 
 /* CAN RECEIVE error counter Register bits(CAN_TECR) */
-#define CAN_RECR_REC0     ((uint8_t)0x01)    
-#define CAN_RECR_REC1     ((uint8_t)0x02)    
-#define CAN_RECR_REC2     ((uint8_t)0x04)    
-#define CAN_RECR_REC3     ((uint8_t)0x08)    
-#define CAN_RECR_REC4     ((uint8_t)0x10)    
-#define CAN_RECR_REC5     ((uint8_t)0x20)    
-#define CAN_RECR_REC6     ((uint8_t)0x40)    
-#define CAN_RECR_REC7     ((uint8_t)0x80)    
+#define CAN_RECR_REC0     ((uint8_t)0x01)
+#define CAN_RECR_REC1     ((uint8_t)0x02)
+#define CAN_RECR_REC2     ((uint8_t)0x04)
+#define CAN_RECR_REC3     ((uint8_t)0x08)
+#define CAN_RECR_REC4     ((uint8_t)0x10)
+#define CAN_RECR_REC5     ((uint8_t)0x20)
+#define CAN_RECR_REC6     ((uint8_t)0x40)
+#define CAN_RECR_REC7     ((uint8_t)0x80)
 
 /* CAN filter mode register bits (CAN_FMR) */
-#define CAN_FMR1_FML0     ((uint8_t)0x01)    
-#define CAN_FMR1_FMH0     ((uint8_t)0x02)    
-#define CAN_FMR1_FML1     ((uint8_t)0x04)    
-#define CAN_FMR1_FMH1     ((uint8_t)0x08)    
-#define CAN_FMR1_FML2     ((uint8_t)0x10)    
-#define CAN_FMR1_FMH2     ((uint8_t)0x20)    
-#define CAN_FMR1_FML3     ((uint8_t)0x40)    
-#define CAN_FMR1_FMH3     ((uint8_t)0x80)    
+#define CAN_FMR1_FML0     ((uint8_t)0x01)
+#define CAN_FMR1_FMH0     ((uint8_t)0x02)
+#define CAN_FMR1_FML1     ((uint8_t)0x04)
+#define CAN_FMR1_FMH1     ((uint8_t)0x08)
+#define CAN_FMR1_FML2     ((uint8_t)0x10)
+#define CAN_FMR1_FMH2     ((uint8_t)0x20)
+#define CAN_FMR1_FML3     ((uint8_t)0x40)
+#define CAN_FMR1_FMH3     ((uint8_t)0x80)
 
-#define CAN_FMR2_FML4     ((uint8_t)0x01)    
-#define CAN_FMR2_FMH4     ((uint8_t)0x02)    
-#define CAN_FMR2_FML5     ((uint8_t)0x04)    
-#define CAN_FMR2_FMH5     ((uint8_t)0x08)    
+#define CAN_FMR2_FML4     ((uint8_t)0x01)
+#define CAN_FMR2_FMH4     ((uint8_t)0x02)
+#define CAN_FMR2_FML5     ((uint8_t)0x04)
+#define CAN_FMR2_FMH5     ((uint8_t)0x08)
 
 /* CAN filter Config register bits (CAN_FCR) */
-#define CAN_FCR1_FACT0     ((uint8_t)0x01)    
-#define CAN_FCR1_FACT1     ((uint8_t)0x10)    
-#define CAN_FCR2_FACT2     ((uint8_t)0x01)    
-#define CAN_FCR2_FACT3     ((uint8_t)0x10)    
-#define CAN_FCR3_FACT4     ((uint8_t)0x01)    
-#define CAN_FCR3_FACT5     ((uint8_t)0x10)    
+#define CAN_FCR1_FACT0     ((uint8_t)0x01)
+#define CAN_FCR1_FACT1     ((uint8_t)0x10)
+#define CAN_FCR2_FACT2     ((uint8_t)0x01)
+#define CAN_FCR2_FACT3     ((uint8_t)0x10)
+#define CAN_FCR3_FACT4     ((uint8_t)0x01)
+#define CAN_FCR3_FACT5     ((uint8_t)0x10)
 
-#define CAN_FCR1_FSC00     ((uint8_t)0x02)    
-#define CAN_FCR1_FSC01     ((uint8_t)0x04)    
-#define CAN_FCR1_FSC10     ((uint8_t)0x20)    
-#define CAN_FCR1_FSC11     ((uint8_t)0x40)    
-#define CAN_FCR2_FSC20     ((uint8_t)0x02)    
-#define CAN_FCR2_FSC21     ((uint8_t)0x04)    
-#define CAN_FCR2_FSC30     ((uint8_t)0x20)    
-#define CAN_FCR2_FSC31     ((uint8_t)0x40)    
-#define CAN_FCR3_FSC40     ((uint8_t)0x02)    
-#define CAN_FCR3_FSC41     ((uint8_t)0x04)    
-#define CAN_FCR3_FSC50     ((uint8_t)0x20)    
+#define CAN_FCR1_FSC00     ((uint8_t)0x02)
+#define CAN_FCR1_FSC01     ((uint8_t)0x04)
+#define CAN_FCR1_FSC10     ((uint8_t)0x20)
+#define CAN_FCR1_FSC11     ((uint8_t)0x40)
+#define CAN_FCR2_FSC20     ((uint8_t)0x02)
+#define CAN_FCR2_FSC21     ((uint8_t)0x04)
+#define CAN_FCR2_FSC30     ((uint8_t)0x20)
+#define CAN_FCR2_FSC31     ((uint8_t)0x40)
+#define CAN_FCR3_FSC40     ((uint8_t)0x02)
+#define CAN_FCR3_FSC41     ((uint8_t)0x04)
+#define CAN_FCR3_FSC50     ((uint8_t)0x20)
 #define CAN_FCR3_FSC51     ((uint8_t)0x40)
 
 /**
@@ -2710,7 +2614,7 @@ CFG_TypeDef;
 #if defined (STM8S903) || defined (STM8AF622x)
  #define TIM5 ((TIM5_TypeDef *) TIM5_BaseAddress)
  #define TIM6 ((TIM6_TypeDef *) TIM6_BaseAddress)
-#endif /* (STM8S903) || (STM8AF622x) */ 
+#endif /* (STM8S903) || (STM8AF622x) */
 
 #define ITC ((ITC_TypeDef *) ITC_BaseAddress)
 
@@ -2787,20 +2691,20 @@ CFG_TypeDef;
  __interrupt void (a)( void )
  #define INTERRUPT_HANDLER_TRAP(a) \
  _Pragma( VECTOR_ID( 1 ) ) \
- __interrupt void (a) (void)  
+ __interrupt void (a) (void)
 #endif /* _IAR_ */
- 
+
 /* SDCC patch: declare ISR handlers */
 #ifdef _SDCC_
  #define INTERRUPT_HANDLER(a,b) void a() __interrupt(b)
 
  /* traps require >=v3.4.3 -> else warn and skip */
  #if SDCC_VERSION >= 30403
-   #define INTERRUPT_HANDLER_TRAP(a) void a() __trap 
+   #define INTERRUPT_HANDLER_TRAP(a) void a() __trap
  #else
    #warning traps require SDCC>=v3.4.3. Update if required
    #define INTERRUPT_HANDLER_TRAP(a) void a()
- #endif 
+ #endif
 
 #endif /* _SDCC_ */
 
