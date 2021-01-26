@@ -16,25 +16,25 @@
 *******************************************************************************/
 void port_init()
 {
-    PA->ODR = 0x00;
-    PA->DDR = 0xFF;
-    PA->CR1 = 0xFF;
-    PA->CR2 = 0x00;
+    GPIOA->ODR = 0x00;
+    GPIOA->DDR = 0xFF;
+    GPIOA->CR1 = 0xFF;
+    GPIOA->CR2 = 0x00;
 
-    PB->ODR = 0x00;
-    PB->DDR = 0xFF;
-    PB->CR1 = 0xCF;
-    PB->CR2 = 0x00;
+    GPIOB->ODR = 0x00;
+    GPIOB->DDR = 0xFF;
+    GPIOB->CR1 = 0xCF;
+    GPIOB->CR2 = 0x00;
 
-    PC->ODR = 0x00;
-    PC->DDR = 0xFF;
-    PC->CR1 = 0xFF;
-    PC->CR2 = 0x00;
+    GPIOC->ODR = 0x00;
+    GPIOC->DDR = 0xFF;
+    GPIOC->CR1 = 0xFF;
+    GPIOC->CR2 = 0x00;
 
-    PD->ODR = 0x00;
-    PD->DDR = 0xFF;
-    PD->CR1 = 0xFF;
-    PD->CR2 = 0x00;
+    GPIOD->ODR = 0x00;
+    GPIOD->DDR = 0xFF;
+    GPIOD->CR1 = 0xFF;
+    GPIOD->CR2 = 0x00;
 }
 
 /*******************************************************************************
