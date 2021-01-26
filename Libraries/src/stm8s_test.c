@@ -11,4 +11,3 @@ void delay_ms(uint16_t nCount)
     }
 }
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
