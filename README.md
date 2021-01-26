@@ -1,9 +1,9 @@
-# [Framework N02](https://github.com/OS-Q/N02)
+# [N02](https://github.com/OS-Q/N02)
 
 [![sites](http://182.61.61.133/link/resources/OSQ.png)](http://www.OS-Q.com)
 
 ### [简介](https://github.com/OS-Q/N02/wiki)
 
-[Framework N02](https://github.com/OS-Q/N02)基于[PlatformIO](https://github.com/platformio/platformio-core) 框架
+[N02](https://github.com/OS-Q/N02) 基于[PlatformIO](https://github.com/platformio/platformio-core)框架
 
 ### [Q = (OpenSource & OperatingSystem) ](http://www.OS-Q.com)

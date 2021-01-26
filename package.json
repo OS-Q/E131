@@ -1,7 +1,7 @@
 {
 	"name": "N02",
-	"description": "framework N02 STM8S SPL",
+	"description": "framework N02 STM8S",
 	"system": "*",
-	"url": "https://www.st.com/en/embedded-software/stsw-stm8069.html",
-	"version": "2.3.0"
+	"url": "https://github.com/OS-Q/N02",
+	"version": "1.0.0"
 }
