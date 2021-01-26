@@ -3,5 +3,5 @@
 	"description": "framework N02 STM8S",
 	"system": "*",
 	"url": "https://github.com/OS-Q/N02",
-	"version": "1.0.0"
+	"version": "1.1.0"
 }
