@@ -1,12 +1,16 @@
 
 #include "stm8s_clk.h"
 
-void delay_ms(uint16_t nCount)
+
+void CLK_HSICmd(FunctionalState NewState)
 {
-    uint16_t i=0;
-    while(nCount--)
+    if (NewState != DISABLE)
     {
-        for(i=0;i<1000;i++);
+        CLK->ICKR |= CLK_ICKR_HSIEN;
+    }
+    else
+    {
+        CLK->ICKR &= (uint8_t)(~CLK_ICKR_HSIEN);
     }
 }
 
