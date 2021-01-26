@@ -1,5 +1,5 @@
 
-#include "stm8s_delay.h"
+#include "delay.h"
 
 void delay_us(uint16_t nCount)
 {
