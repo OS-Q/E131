@@ -71,7 +71,7 @@ void timer4_isr(void) __interrupt(23)
     // Clear interrupt flag
     TIM4->SR &= ~TIM4_SR1_UIF;
     // Rewrite counter, calculated value is 125
-    TIM4->CNTR = 0xFF - 128;
+    TIM4->CNTR = 0xFF - 125;
 }
 
 /*---------------------------(C) COPYRIGHT 2021 OS-Q -------------------------*/

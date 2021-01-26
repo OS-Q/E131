@@ -33,6 +33,7 @@ void i2c_read_cmd(i2c_cmd_t *cmd);
  * You don't need to call the interrupt routine, but it must be
  * visible in main.
  */
-void i2c_isr(void) __interrupt(INT_I2C);
+
+void i2c_isr(void) __interrupt(19);
 
 #endif /*__I2C_H*/

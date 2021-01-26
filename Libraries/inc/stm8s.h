@@ -2623,9 +2623,9 @@ CFG_TypeDef;
 #define DM ((DM_TypeDef *) DM_BaseAddress)
 
 
-// #ifdef USE_STDPERIPH_DRIVER
-// #include "stm8s_conf.h"
-// #endif
+#ifdef USE_STDPERIPH_DRIVER
+#include "main.h"
+#endif
 
 /* Exported macro --------------------------------------------------------------*/
 
