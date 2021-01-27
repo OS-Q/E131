@@ -16,7 +16,6 @@ void tim4_stop(void)
 void tim4_init(void)
 {
     disableInterrupts();
-    TIM4_CR1 |= TIM4_CR1_CEN;
     // CK_PSC (internal fMASTER) TIM4_PSCR_128 =7
     TIM4->PSCR = 7;
     // Enable update interrupt for timer 4
