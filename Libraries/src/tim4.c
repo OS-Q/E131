@@ -8,7 +8,7 @@
 #include <stddef.h>
 
 #include "stm8s.h"
-#include "timer4.h"
+#include "tim4.h"
 
 volatile uint8_t *_t4_timeoutp;
 
@@ -18,7 +18,7 @@ volatile uint8_t *_t4_timeoutp;
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-void timer4_init()
+void tim4_init()
 {
     disableInterrupts();
     TIM4->PSCR = 7;
@@ -34,7 +34,7 @@ void timer4_init()
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-void timer4_start(uint8_t *timeoutp)
+void tim4_start(uint8_t *timeoutp)
 {
     // Enable timer 4
     _t4_timeoutp = timeoutp;
@@ -47,7 +47,7 @@ void timer4_start(uint8_t *timeoutp)
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-void timer4_stop()
+void tim4_stop()
 {
     // disable t4
     TIM4->CR1 &= ~TIM4_CR1_CEN;
@@ -59,19 +59,19 @@ void timer4_stop()
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-void timer4_isr(void) __interrupt(23)
-{
-    if (*_t4_timeoutp > 0)
-    {
-        (*_t4_timeoutp)--;
-    } else
-    {
-        timer4_stop();
-    }
-    // Clear interrupt flag
-    TIM4->SR &= ~TIM4_SR1_UIF;
-    // Rewrite counter, calculated value is 125
-    TIM4->CNTR = 0xFF - 125;
-}
+// void tim4_isr(void) __interrupt(23)
+// {
+//     if (*_t4_timeoutp > 0)
+//     {
+//         (*_t4_timeoutp)--;
+//     } else
+//     {
+//         tim4_stop();
+//     }
+//     // Clear interrupt flag
+//     TIM4->SR &= ~TIM4_SR1_UIF;
+//     // Rewrite counter, calculated value is 125
+//     TIM4->CNTR = 0xFF - 125;
+// }
 
 /*---------------------------(C) COPYRIGHT 2021 OS-Q -------------------------*/

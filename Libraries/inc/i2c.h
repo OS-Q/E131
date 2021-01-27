@@ -13,7 +13,8 @@ extern volatile uint8_t _i2c_tx_complete;
 /**
  * Stores state during interrupt calls and returns data
  */
-typedef struct {
+typedef struct
+{
     uint8_t address; // I2C device address without direction bit
     uint8_t data[I2C_MSG_MAX_DATA_SIZE + 1]; // buffer
     uint8_t di;   // data index during write
@@ -28,11 +29,6 @@ void i2c_init();
 void i2c_write_cmd(i2c_cmd_t *cmd);
 
 void i2c_read_cmd(i2c_cmd_t *cmd);
-
-/**
- * You don't need to call the interrupt routine, but it must be
- * visible in main.
- */
 
 void i2c_isr(void) __interrupt(19);
 
