@@ -78,26 +78,7 @@ void clk_init(void)
     enableInterrupts();
 }
 
-/*******************************************************************************
-**函数信息 ：
-**功能描述 ：
-**输入参数 ：
-**输出参数 ：
-*******************************************************************************/
-void tim1_init(uint16_t Prescaler, uint16_t Period)
-{
-    disableInterrupts();
-    TIM1->ARRH = (uint8_t)((Period-1) >> 8);
-    TIM1->ARRL = (uint8_t)(Period-1);
-    TIM1->PSCRH = (uint8_t)(Prescaler >> 8);
-    TIM1->PSCRL = (uint8_t)(Prescaler);
-    TIM1->RCR = 0;
-    TIM1->SR1 = 0xFE;
-    TIM1->SR2 = 0x1E;
-    TIM1->IER = 0x01;
-    TIM1->CR1 = 0x01;
-    enableInterrupts();
-}
+
 
 /*******************************************************************************
 **函数信息 ：

@@ -1,6 +1,6 @@
 /*******************************************************************************
 ****版本：V1.0.0
-****平台：STM8S003
+****平台：STM8S
 ****日期：2021-01-12
 ****作者：Qitas
 ****版权：OS-Q
@@ -8,9 +8,7 @@
 #include <stddef.h>
 
 #include "stm8s.h"
-#include "tim4.h"
-
-volatile uint8_t *_t4_timeoutp;
+#include "tim1.h"
 
 /*******************************************************************************
 **函数信息 ：
@@ -18,13 +16,18 @@ volatile uint8_t *_t4_timeoutp;
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-void tim4_init()
+void tim1_init(uint16_t Prescaler, uint16_t Period)
 {
     disableInterrupts();
-    TIM4->PSCR = 7;
-    TIM4->IER |= TIM4_IER_UIE;
-    TIM4->SR1 &= ~TIM4_SR1_UIF;
-    // TIM4->SR &= 0xFE;
+    TIM1->PSCRH = (uint8_t)(Prescaler >> 8);
+    TIM1->PSCRL = (uint8_t)(Prescaler);
+    TIM1->ARRH = (uint8_t)((Period-1) >> 8);
+    TIM1->ARRL = (uint8_t)(Period-1);
+    TIM1->RCR = 0;
+    TIM1->SR1 &= ~TIM1_SR1_UIF;
+    TIM1->SR2 = 0x1E;
+    TIM1->IER = TIM1_IER_UIE;
+    TIM1->CR1 = TIM1_CR1_CEN;
     enableInterrupts();
 }
 
@@ -34,24 +37,9 @@ void tim4_init()
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-void tim4_start(uint8_t *timeoutp)
+void tim1_stop(void)
 {
-    // Enable timer 4
-    _t4_timeoutp = timeoutp;
-    TIM4->CR1 |= TIM4_CR1_CEN;
-}
-
-/*******************************************************************************
-**函数信息 ：
-**功能描述 ：
-**输入参数 ：
-**输出参数 ：
-*******************************************************************************/
-void tim4_stop()
-{
-    // disable t4
-    TIM4->CR1 &= ~TIM4_CR1_CEN;
-    _t4_timeoutp = NULL;
+    TIM1->CR1 &= ~TIM1_CR1_CEN;
 }
 /*******************************************************************************
 **函数信息 ：
@@ -59,19 +47,10 @@ void tim4_stop()
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-// void tim4_isr(void) __interrupt(23)
+// void tim1_isr(void) __interrupt(11)
 // {
-//     if (*_t4_timeoutp > 0)
-//     {
-//         (*_t4_timeoutp)--;
-//     } else
-//     {
-//         tim4_stop();
-//     }
-//     // Clear interrupt flag
-//     TIM4->SR &= ~TIM4_SR1_UIF;
-//     // Rewrite counter, calculated value is 125
-//     TIM4->CNTR = 0xFF - 125;
+//     TIM1->SR1=0x00;
 // }
+
 
 /*---------------------------(C) COPYRIGHT 2021 OS-Q -------------------------*/
