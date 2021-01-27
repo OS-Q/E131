@@ -3,11 +3,6 @@
 
 #include <stdint.h>
 
-/**
- * Timer 4 is a simple 8-bit upcounting counter.
- * Prescaler = 128, fMASTER = 16MHz, Counter = 125 => interrupt interval
- * is 1ms.
- */
 
 void tim4_init(uint8_t cnt);
 void tim4_stop(void);

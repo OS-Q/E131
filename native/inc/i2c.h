@@ -25,11 +25,8 @@ typedef struct
 extern volatile i2c_cmd_p _i2c_cmd_p;
 
 void i2c_init();
-
 void i2c_write_cmd(i2c_cmd_t *cmd);
-
 void i2c_read_cmd(i2c_cmd_t *cmd);
-
 void i2c_isr(void) __interrupt(19);
 
 #endif /*__I2C_H*/

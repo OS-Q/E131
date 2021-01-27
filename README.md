@@ -4,6 +4,6 @@
 
 ### [简介](https://github.com/OS-Q/N02/wiki)
 
-[N02](https://github.com/OS-Q/N02) 基于[PlatformIO](https://github.com/platformio/platformio-core)框架，适用于STM8S开发
+[N02](https://github.com/OS-Q/N02) 基于[PlatformIO](https://github.com/platformio/platformio-core)框架，适用于STM8S平台开发
 
 ### [Q = (OpenSource & OperatingSystem) ](http://www.OS-Q.com)

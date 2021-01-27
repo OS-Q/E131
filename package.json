@@ -1,7 +1,7 @@
 {
 	"name": "N02",
-	"description": "framework N02 STM8S",
+	"description": "Native N02 for STM8S",
 	"system": "*",
 	"url": "https://github.com/OS-Q/N02",
-	"version": "1.1.0"
+	"version": "1.1.1"
 }

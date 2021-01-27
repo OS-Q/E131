@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-void uart1_init();
+void uart1_init(uint8_t buad,uint8_t pair);
 uint8_t uart1_put(const char *s);
 uint8_t uart1_get(void);
 void uart1_set(uint8_t data);
