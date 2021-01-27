@@ -19,7 +19,7 @@ void adc_init(void)
 uint16_t adc_get(void)
 {
     uint8_t adcH, adcL;
-    ADC1->CR1 | = ADC1_CR1_ADON;
+    ADC1->CR1 |= ADC1_CR1_ADON;
     while (!(ADC1->CSR & ADC1_CSR_EOC));
     adcL = ADC1->DRL;
     adcH = ADC1->DRH;
