@@ -3,6 +3,8 @@
 
 // #include <stdint.h>
 
+void flash_unlock(void);
+void flash_lock(void);
+void flash_busy_wait(void);
 
-
-#endif /*__PIN_H*/
+#endif /*__FLASH_H*/
