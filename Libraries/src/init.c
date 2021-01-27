@@ -8,34 +8,29 @@
 #include "stm8s.h"
 #include "init.h"
 
-/*******************************************************************************
-**函数信息 ：
-**功能描述 ：
-**输入参数 ：
-**输出参数 ：
-*******************************************************************************/
-void pin_init()
-{
-    GPIOA->ODR = 0x00;
-    GPIOA->DDR = 0xFF;
-    GPIOA->CR1 = 0xFF;
-    GPIOA->CR2 = 0x00;
 
-    GPIOB->ODR = 0x00;
-    GPIOB->DDR = 0xFF;
-    GPIOB->CR1 = 0xCF;
-    GPIOB->CR2 = 0x00;
+// void pin_init()
+// {
+//     GPIOA->ODR = 0x00;
+//     GPIOA->DDR = 0xFF;
+//     GPIOA->CR1 = 0xFF;
+//     GPIOA->CR2 = 0x00;
 
-    GPIOC->ODR = 0x00;
-    GPIOC->DDR = 0xFF;
-    GPIOC->CR1 = 0xFF;
-    GPIOC->CR2 = 0x00;
+//     GPIOB->ODR = 0x00;
+//     GPIOB->DDR = 0xFF;
+//     GPIOB->CR1 = 0xCF;
+//     GPIOB->CR2 = 0x00;
 
-    GPIOD->ODR = 0x00;
-    GPIOD->DDR = 0xFF;
-    GPIOD->CR1 = 0xFF;
-    GPIOD->CR2 = 0x00;
-}
+//     GPIOC->ODR = 0x00;
+//     GPIOC->DDR = 0xFF;
+//     GPIOC->CR1 = 0xFF;
+//     GPIOC->CR2 = 0x00;
+
+//     GPIOD->ODR = 0x00;
+//     GPIOD->DDR = 0xFF;
+//     GPIOD->CR1 = 0xFF;
+//     GPIOD->CR2 = 0x00;
+// }
 
 /*******************************************************************************
 **函数信息 ：
@@ -72,13 +67,11 @@ void clk_init(void)
     CLK->CCOR = 0;
     CLK->HSITRIMR = 0;
     CLK->SWIMCCR = 0;
-
     CLK->SWCR = 0;
     CLK->SWCR |= CLK_SWCR_SWEN;
     while (0 != (CLK->SWCR & CLK_SWCR_SWBSY));
     enableInterrupts();
 }
-
 
 
 /*******************************************************************************

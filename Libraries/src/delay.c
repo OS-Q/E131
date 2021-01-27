@@ -8,25 +8,19 @@
 #include "stm8s.h"
 #include "delay.h"
 
-void delay_us(uint16_t nCount)
+void delay_us(uint16_t cnt)
 {
-    while(nCount--)
+    while(cnt--)
     {
-        nop();
         nop();
         nop();
         nop();
     }
 }
-/*******************************************************************************
-**函数信息 ：
-**功能描述 ：
-**输入参数 ：
-**输出参数 ：
-*******************************************************************************/
-void delay_ms(uint16_t nCount)
+
+void delay_ms(uint16_t cnt)
 {
-    while(nCount--)
+    while(cnt--)
     {
         delay_us(999);
     }
