@@ -5,10 +5,13 @@
 ****作者：Qitas
 ****版权：OS-Q
 *******************************************************************************/
-#include <stddef.h>
-
 #include "stm8s.h"
 #include "tim1.h"
+
+void tim1_stop(void)
+{
+    TIM1->CR1 &= ~TIM1_CR1_CEN;
+}
 
 /*******************************************************************************
 **函数信息 ：
@@ -25,7 +28,7 @@ void tim1_init(uint16_t Prescaler, uint16_t Period)
     TIM1->ARRL = (uint8_t)(Period-1);
     TIM1->RCR = 0;
     TIM1->SR1 &= ~TIM1_SR1_UIF;
-    TIM1->SR2 = 0x1E;
+    // TIM1->SR2 = 0x1E;
     TIM1->IER = TIM1_IER_UIE;
     TIM1->CR1 = TIM1_CR1_CEN;
     enableInterrupts();
@@ -37,19 +40,9 @@ void tim1_init(uint16_t Prescaler, uint16_t Period)
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-void tim1_stop(void)
-{
-    TIM1->CR1 &= ~TIM1_CR1_CEN;
-}
-/*******************************************************************************
-**函数信息 ：
-**功能描述 ：
-**输入参数 ：
-**输出参数 ：
-*******************************************************************************/
 // void tim1_isr(void) __interrupt(11)
 // {
-//     TIM1->SR1=0x00;
+//     TIM1->SR1 &= ~TIM1_SR1_UIF;
 // }
 
 

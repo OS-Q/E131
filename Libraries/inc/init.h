@@ -5,6 +5,7 @@
 void pin_init(void);
 void dog_init(void);
 void clk_init(void);
+
 void reboot(void);
 void feed_dog(void);
 

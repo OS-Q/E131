@@ -18,7 +18,7 @@
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-int uart_puts(const char *s)
+uint8_t uart_puts(const char *s)
 {
     uint8_t i;
     for(i = 0; i < strlen(s); i++)
