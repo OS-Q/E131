@@ -12,18 +12,23 @@ void tim4_stop(void)
 {
     TIM4->CR1 &= ~TIM4_CR1_CEN;
 }
-
-void tim4_init(void)
+/*******************************************************************************
+**函数信息 ：
+**功能描述 ：Prescaler = 128, fMASTER = 16MHz, Counter = 125/1ms 250/2ms
+**输入参数 ：
+**输出参数 ：
+*******************************************************************************/
+void tim4_init(uint8_t cnt)
 {
     disableInterrupts();
-    // CK_PSC (internal fMASTER) TIM4_PSCR_128 =7
-    TIM4->PSCR = 7;
+    TIM4->PSCR = 7; //TIM4_PSCR_128 =7
     // Enable update interrupt for timer 4
     TIM4->IER |= TIM4_IER_UIE;
     // Clear timer interrupt flag
     TIM4->SR1 &= ~TIM4_SR1_UIF;
-    // TIM4->ARR  = 0xFF - 126;
-    // TIM4->CNTR = 0xFF - 126;
+    // 自动重装值
+    TIM4->ARR  = ~(uint8_t)(cnt);
+    // TIM4->CNTR = ~(uint8_t)(cnt);
     TIM4->CR1 |= TIM4_CR1_CEN;
     enableInterrupts();
 }

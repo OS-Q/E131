@@ -9,7 +9,7 @@
  * is 1ms.
  */
 
-void tim4_init(void);
+void tim4_init(uint8_t cnt);
 void tim4_stop(void);
 void tim4_isr(void) __interrupt(23);
 
