@@ -9,7 +9,7 @@
 #include <stdint.h>
 
 #include "stm8s.h"
-#include "uart.h"
+#include "uart1.h"
 
 /*******************************************************************************
 **函数信息 ：
@@ -17,7 +17,7 @@
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-void uart_init()
+void uart1_init()
 {
     /* Configure RX and TX pins */
     GPIOD->DDR = 0xBF;
@@ -37,7 +37,7 @@ void uart_init()
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-uint8_t uart_puts(const char *s)
+uint8_t uart1_put(const char *s)
 {
     uint8_t i;
     for(i = 0; i < strlen(s); i++)
@@ -48,5 +48,23 @@ uint8_t uart_puts(const char *s)
     return(i);
 }
 
+void uart1_set(uint8_t data)
+{
+    // while(!(UART1->SR & (1<<7)));
+    UART1->DR = data;
+    while(!(UART1->SR & (1<<6)));
+}
+
+uint8_t uart1_get(void)
+{
+    while (!(UART1->SR & (1<<5)));
+    return UART1->DR;
+}
+
+// void uart1_isr(void) __interrupt(18)
+// {
+//     // Clear interrupt flag
+//     UART1->SR = 0xDF;
+// }
 
 /*---------------------------(C) COPYRIGHT 2021 OS-Q -------------------------*/
