@@ -22,8 +22,8 @@ void tim4_init(void)
     TIM4->IER |= TIM4_IER_UIE;
     // Clear timer interrupt flag
     TIM4->SR1 &= ~TIM4_SR1_UIF;
-    TIM4->ARR  = 0xFF - 125;
-    TIM4->CNTR = 0xFF - 125;
+    // TIM4->ARR  = 0xFF - 126;
+    // TIM4->CNTR = 0xFF - 126;
     TIM4->CR1 |= TIM4_CR1_CEN;
     enableInterrupts();
 }
