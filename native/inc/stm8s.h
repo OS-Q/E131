@@ -2,13 +2,11 @@
 #ifndef __STM8S_H
 #define __STM8S_H
 
-
-
 #if !defined (STM8S208) && !defined (STM8S207) && !defined (STM8S105) && \
     !defined (STM8S103) && !defined (STM8S903) && !defined (STM8AF52Ax) && \
     !defined (STM8AF62Ax) && !defined (STM8AF626x) && !defined (STM8S007) && \
     !defined (STM8S003)&& !defined (STM8S005) && !defined(STM8S001) && !defined (STM8AF622x)
- #error "Please select first the target STM8S/A device used in your application (in stm8s.h file)"
+#error "Please select first the target STM8S/A device used in your application (in stm8s.h file)"
 #endif
 
 /******************************************************************************/
@@ -24,8 +22,8 @@
 #elif defined(__SDCC)                    /* SDCC patch: add compiler key */
  #define _SDCC_
  #define SDCC_VERSION (__SDCC_VERSION_MAJOR * 10000 \
-                     + __SDCC_VERSION_MINOR * 100 \
-                     + __SDCC_VERSION_PATCH)
+                      + __SDCC_VERSION_MINOR * 100 \
+                      + __SDCC_VERSION_PATCH)
 #else
  #error "Unsupported Compiler!"          /* Compiler defines not found */
 #endif

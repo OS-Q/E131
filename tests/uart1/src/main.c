@@ -19,7 +19,7 @@ volatile uint32_t time_ms_cnt=0;
 **输入参数 ：
 **输出参数 ：
 *******************************************************************************/
-int main(void)
+int main()
 {
     pin_init();
     clk_init();
@@ -28,20 +28,14 @@ int main(void)
     uart1_init(0,0);
     dog_init();
     feed_dog();
-    adc_init();
-    uart1_put("\r\nstart stm8s adc\r\n");
+    uart1_put("\r\nstart stm8s\r\n");
     while(1)
     {
-        if(time_ms_cnt%3000==0)
+        if(time_ms_cnt%5000==0)
         {
-            uart1_put("\r\nSTM8S ADC: ");
-            uint16_t val = adc_get();
-            // float voltage = (V_REF / 1024.0) * val * 1000;
-            // printf("Channel4: %d mV\n", (uint16_t) voltage);
-            uart1_set(val/1000+'0');
-            uart1_set((val/100)%10+'0');
-            uart1_set((val/10)%10+'0');
-            uart1_set(val%10+'0');
+            uart1_put("\r\nIt is running on STM8S baud 115200.");
+            // uart1_set(time_ms_cnt/100);
+            // printf("Test,%d\n",time_ms_cnt);
             delay_ms(300);
         }
     }

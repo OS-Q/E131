@@ -5,10 +5,8 @@
 #include "delay.h"
 #include "init.h"
 #include "pin.h"
-#include "adc.h"
-#include "tim1.h"
-#include "tim4.h"
 #include "uart1.h"
+#include "flash.h"
 
 #endif
 
