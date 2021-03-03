@@ -37,5 +37,5 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: ubuntu-build-P14
+          name: ubuntu-build-N14
           path: ${{ matrix.examples }}/build
