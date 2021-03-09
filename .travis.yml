@@ -15,6 +15,28 @@ install:
 script:
   - pio run -d $PLATFORMIO_PROJECT_DIR
 
-notifications:
-  email: false
+before_deploy: # deploy之前的工作
+  - zip -q -r build.zip  tests/build  # 打包压缩
+  - sha256sum build.zip > build.asc # 校验值
 
+deploy:
+  provider: releases # 操作 repo 的 releases 页面
+  token: $GITHUB_TOKEN # 使用github token验证身份，进行操作
+  file:
+    - build.zip # 上传的文件
+    - build.asc #上传的文件
+  skip_cleanup: true # 要上传文件到 release，所以不能自动清除
+  on:
+    tags: true #  只有打 tag 时才运行
+
+notifications:
+  email:
+    recipients:
+      - tang@qitas.cn
+    on_success: never # default: change
+    on_failure: always # default: always
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: windows-build-E14
+          path: ${{ matrix.examples }}/build

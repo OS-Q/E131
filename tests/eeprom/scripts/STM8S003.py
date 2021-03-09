@@ -3,10 +3,10 @@ import shutil
 import os
 
 def after_build(source, target, env):
-	isExists=os.path.exists('build')
+	isExists=os.path.exists('../build')
 	if not isExists:
-		os.mkdir('build')
-	shutil.copy(firmware_source, 'build/eeprom_stm8s003.ihx')
+		os.mkdir('../build')
+	shutil.copy(firmware_source, '../build/eeprom_stm8s003.ihx')
 
 env.AddPostAction("buildprog", after_build)
 
