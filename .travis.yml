@@ -33,10 +33,5 @@ notifications:
   email:
     recipients:
       - tang@qitas.cn
-    on_success: never # default: change
-    on_failure: always # default: always
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: windows-build-E14
-          path: ${{ matrix.examples }}/build
+    on_success: always # default: change
+    on_failure: never # default: always
