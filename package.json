@@ -1,7 +1,7 @@
 {
-	"name": "N14",
-	"description": "Native Reg LIBS for STM8S",
+	"name": "E14",
+	"description": "Reg LIBS for STM8S",
 	"system": "*",
-	"url": "https://github.com/OS-Q/N14",
+	"url": "https://github.com/OS-Q/E14",
 	"version": "1.0.0"
 }

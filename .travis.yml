@@ -1,0 +1,20 @@
+language: python
+python:
+  - "3.7"
+
+env:
+  - PLATFORMIO_PROJECT_DIR=tests/flash
+  - PLATFORMIO_PROJECT_DIR=tests/uart1
+  - PLATFORMIO_PROJECT_DIR=tests/blink
+  - PLATFORMIO_PROJECT_DIR=tests/eeprom
+
+install:
+  - pip install -U https://github.com/OS-Q/S03/archive/master.zip
+  - pio platform install https://github.com/OS-Q/P14.git
+
+script:
+  - pio run -d $PLATFORMIO_PROJECT_DIR
+
+notifications:
+  email: false
+
