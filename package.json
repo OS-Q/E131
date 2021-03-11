@@ -1,7 +1,7 @@
 {
-	"name": "E14",
-	"description": "Reg LIBS for STM8S",
+	"name": "E14A",
+	"description": "REG LIBS for STM8S",
 	"system": "*",
-	"url": "https://github.com/OS-Q/E14",
+	"url": "https://github.com/OS-Q/E14A",
 	"version": "1.0.0"
 }
