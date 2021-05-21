@@ -1,7 +1,7 @@
 {
-	"name": "E14A",
-	"description": "REG LIBS for STM8S",
+	"name": "E131",
+	"description": "EXTEND P131",
 	"system": "*",
-	"url": "https://github.com/OS-Q/E14A",
+	"url": "https://github.com/OS-Q/E131",
 	"version": "1.0.0"
 }
